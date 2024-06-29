@@ -22,6 +22,12 @@
 ## About
 I made this module to use in my messenger bot and telegram bots. Since it may usefull to othr so i'm sharing it here. 
 
+## Installation
+
+```bash
+npm install tas33n/GogoAnime-NodeJS
+```
+
 ## Usage:
 ```js
 /* import the library */
