@@ -31,7 +31,7 @@ npm install tas33n/GogoAnime-NodeJS
 ## Usage:
 ```js
 /* import the library */
-const GogoAnime = require("../src/GogoAnime");
+const GogoAnime = require("GogoAnime-NodeJS");
 
 async function main() {
   const gogoAnime = new GogoAnime();
