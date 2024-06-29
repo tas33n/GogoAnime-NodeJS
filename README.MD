@@ -81,7 +81,7 @@ Contributions are welcome! Follow these steps to contribute to this project:
 
 ## Credits
 
-- [Aniyomi](https://github.com/aniyomiorg/aniyomi/)
+- Aniyomi for their goganime-extension - [Aniyomi](https://github.com/aniyomiorg/aniyomi/)
 
 ## License
 This project is licensed under the MIT licence. See the [LICENSE](LICENSE) file for more details.
