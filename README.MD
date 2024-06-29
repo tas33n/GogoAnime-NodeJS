@@ -1,13 +1,12 @@
 <h1 align="center">GogoAnime - NodeJS</h1>
 
-<p align="center">
 
- ![npm](https://img.shields.io/npm/v/my-npm-module)
-![license](https://img.shields.io/npm/l/my-npm-module)
-![issues](https://img.shields.io/github/issues/yourusername/my-npm-module)
-![forks](https://img.shields.io/github/forks/yourusername/my-npm-module)
-![stars](https://img.shields.io/github/stars/yourusername/my-npm-module)
- 
+<p align="center">
+  <img src="https://img.shields.io/badge/version-v1.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/github/license/tas33n/GogoAnime-NodeJS.svg" alt="License">
+  <img src="https://img.shields.io/github/issues/tas33n/GogoAnime-NodeJS.svg" alt="issues">
+  <img src="https://img.shields.io/github/forks/tas33n/GogoAnime-NodeJS.svg" alt="forks">
+  <img src="https://img.shields.io/github/stars/tas33n/GogoAnime-NodeJS.svg" alt="PRs Welcome">
 </p>
 
 <p align="center">
