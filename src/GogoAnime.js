@@ -1,10 +1,12 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
+const path = require("path");
 const GogoStreamExtractor = require("../lib/GogoStreamExtractor");
 const streamwishExtractor = require("../lib/StreamwishExtractor");
 // const doodExtractor = require("../lib/doodExtractor");
 const mp4uploadExtractor = require("../lib/mp4uploadExtractor");
+const parseCookies = require("../lib/cookieParser");
 
 class GogoAnime {
   constructor() {
@@ -19,6 +21,7 @@ class GogoAnime {
     this.streamwishExtractor = new streamwishExtractor(this.client);
     // this.doodExtractor = new doodExtractor(this.client);
     this.mp4uploadExtractor = new mp4uploadExtractor(this.client);
+    this.cookies = parseCookies(path.join(__dirname, "../cookies.txt"));
   }
 
   loadPreferences() {
@@ -45,6 +48,19 @@ class GogoAnime {
       "preferences.json",
       JSON.stringify(this.preferences, null, 2)
     );
+  }
+
+  headers() {
+    const headers = {
+      Origin: this.baseUrl,
+      Referer: `${this.baseUrl}/`,
+    };
+
+    if (this.cookies) {
+      headers.Cookie = this.cookies;
+    }
+
+    return headers;
   }
 
   async popularAnimeRequest(page) {
@@ -226,6 +242,7 @@ class GogoAnime {
     const videoListPage = await axios.get(`${this.baseUrl}${url}`, {
       headers: this.headers(),
     });
+
     const $ = cheerio.load(videoListPage.data);
     const hosterSelection = this.preferences.hoster_selection;
 
@@ -238,8 +255,19 @@ class GogoAnime {
       })
       .get();
 
+    const downloadLinks = [];
+    $("div.list_dowload a").each((index, element) => {
+      downloadLinks.push({
+        res: $(element).text().trim(),
+        url: $(element).attr("href"),
+      });
+    });
+
     const videoLists = await Promise.all(videoPromises);
-    return videoLists.flat();
+    return {
+      videos: videoLists.flat(),
+      download: downloadLinks,
+    };
   }
 
   async getHosterVideos(className, serverUrl) {
@@ -264,13 +292,6 @@ class GogoAnime {
       default:
         return [];
     }
-  }
-
-  headers() {
-    return {
-      Origin: this.baseUrl,
-      Referer: `${this.baseUrl}/`,
-    };
   }
 
   getInfo(document, text) {
