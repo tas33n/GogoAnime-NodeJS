@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v1.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-v1.2.0-blue.svg" alt="Version">
   <img src="https://img.shields.io/github/license/tas33n/GogoAnime-NodeJS.svg" alt="License">
   <img src="https://img.shields.io/github/issues/tas33n/GogoAnime-NodeJS.svg" alt="issues">
   <img src="https://img.shields.io/github/forks/tas33n/GogoAnime-NodeJS.svg" alt="forks">
