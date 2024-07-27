@@ -81,7 +81,7 @@ main().catch(console.error);
 To access direct download links, you need a valid account cookie from the GogoAnime website. Follow these steps:
 
 1. **Install the Cookie Editor Extension**:
-   - Download the "Cookie Editor" extension from the Chrome Web Store.
+   - Download the [Cookie Editor](https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm?hl=en) extension from the Chrome Web Store.
 
 2. **Export Cookies from GogoAnime**:
    - Go to [GogoAnime](https://anitaku.pe/), open the Cookie Editor extension, and click `Export` -> `Export as JSON`.
