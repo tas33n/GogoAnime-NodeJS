@@ -76,6 +76,22 @@ main().catch(console.error);
 
 ```
 
+## 📝 **Important Note**
+
+To access direct download links, you need a valid account cookie from the GogoAnime website. Follow these steps:
+
+1. **Install the Cookie Editor Extension**:
+   - Download the "Cookie Editor" extension from the Chrome Web Store.
+
+2. **Export Cookies from GogoAnime**:
+   - Go to [GogoAnime](https://anitaku.pe/), open the Cookie Editor extension, and click `Export` -> `Export as JSON`.
+
+3. **Update the Project's Cookie File**:
+   - Return to your project, open the `cookies.txt` file, and paste the exported cookie data.
+
+**Disclaimer**: I am not responsible for any issues that may arise from using this project with your account.
+
+
 ## Contribute
 Contributions are welcome! Follow these steps to contribute to this project:
 1. Fork the project.
