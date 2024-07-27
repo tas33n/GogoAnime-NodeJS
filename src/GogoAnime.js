@@ -21,7 +21,7 @@ class GogoAnime {
     this.streamwishExtractor = new streamwishExtractor(this.client);
     // this.doodExtractor = new doodExtractor(this.client);
     this.mp4uploadExtractor = new mp4uploadExtractor(this.client);
-    this.cookies = parseCookies(path.join(__dirname, "../cookies.txt"));
+    this.cookies = parseCookies(path.join(process.cwd(), "cookies.txt"));
   }
 
   loadPreferences() {
@@ -243,7 +243,7 @@ class GogoAnime {
       headers: this.headers(),
     });
 
-     // Save the player response for debugging purposes
+    // Save the player response for debugging purposes
     //  const filePath = path.join(__dirname, 'animeDetails.html');
     //  fs.writeFileSync(filePath, videoListPage.data);
 
@@ -259,21 +259,21 @@ class GogoAnime {
       })
       .get();
 
-      const downloadLinks = [];
-      $("div.list_dowload").each((index, element) => {
-        const links = $(element).find("a");
-        if (links.length > 1) {
-          links.each((i, link) => {
-            downloadLinks.push({
-              res: $(link).text().trim(),
-              url: $(link).attr("href"),
-            });
+    const downloadLinks = [];
+    $("div.list_dowload").each((index, element) => {
+      const links = $(element).find("a");
+      if (links.length > 1) {
+        links.each((i, link) => {
+          downloadLinks.push({
+            res: $(link).text().trim(),
+            url: $(link).attr("href"),
           });
-        } else {
-          const message = $(element).text().trim();
-          downloadLinks.push({ message });
-        }
-      });
+        });
+      } else {
+        const message = $(element).text().trim();
+        downloadLinks.push({ message });
+      }
+    });
 
     const videoLists = await Promise.all(videoPromises);
     return {
