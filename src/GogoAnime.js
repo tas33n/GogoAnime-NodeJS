@@ -243,6 +243,10 @@ class GogoAnime {
       headers: this.headers(),
     });
 
+     // Save the player response for debugging purposes
+    //  const filePath = path.join(__dirname, 'animeDetails.html');
+    //  fs.writeFileSync(filePath, videoListPage.data);
+
     const $ = cheerio.load(videoListPage.data);
     const hosterSelection = this.preferences.hoster_selection;
 
@@ -255,13 +259,21 @@ class GogoAnime {
       })
       .get();
 
-    const downloadLinks = [];
-    $("div.list_dowload a").each((index, element) => {
-      downloadLinks.push({
-        res: $(element).text().trim(),
-        url: $(element).attr("href"),
+      const downloadLinks = [];
+      $("div.list_dowload").each((index, element) => {
+        const links = $(element).find("a");
+        if (links.length > 1) {
+          links.each((i, link) => {
+            downloadLinks.push({
+              res: $(link).text().trim(),
+              url: $(link).attr("href"),
+            });
+          });
+        } else {
+          const message = $(element).text().trim();
+          downloadLinks.push({ message });
+        }
       });
-    });
 
     const videoLists = await Promise.all(videoPromises);
     return {
